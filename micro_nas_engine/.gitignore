@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs and databases
+*.log
+logs/
+
+# NAS Generated outputs
+pareto_frontier.png
+architecture_diagram.png
+
+# Knowledge memory
+knowledge/architecture_memory.json
+
+# Datasets
+datasets/pretraining/MNIST/
+datasets/pretraining/cifar-10-batches-py/
+datasets/pretraining/FashionMNIST/
+datasets/pretraining/*.tar.gz
+datasets/pretraining/*.zip
+datasets/pretraining/*.csv
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
