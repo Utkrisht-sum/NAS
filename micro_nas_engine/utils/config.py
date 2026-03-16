@@ -20,8 +20,22 @@ class Config:
     DEFAULT_ALPHA = 1.0  # Accuracy weight
     DEFAULT_BETA = 1.0   # Compute penalty weight
 
+    # Robust Device Check
+    @staticmethod
+    def _get_device():
+        if not torch.cuda.is_available():
+            return "cpu"
+        try:
+            # Try to actually use the GPU. Sometimes is_available() is True
+            # but the driver/hardware has mismatched compute capabilities
+            # resulting in "no kernel image is available" errors.
+            _ = torch.zeros(1).cuda()
+            return "cuda"
+        except Exception as e:
+            return "cpu"
+
     # Device
-    DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    DEVICE = _get_device()
 
     # Search Space Bounds (Sensible defaults to prevent OOM)
     MLP_MAX_LAYERS = 5
